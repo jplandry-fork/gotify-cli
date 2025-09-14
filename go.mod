@@ -2,7 +2,7 @@ module github.com/gotify/cli/v2
 
 go 1.23
 
-toolchain go1.24.1
+toolchain go1.25.1
 
 require (
 	github.com/adrg/xdg v0.4.0
