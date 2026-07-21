@@ -178,11 +178,6 @@ func inputRawToken(gotify *api.GotifyREST) string {
 	for {
 		enteredToken := inputString("Application Token: ")
 
-		if len(enteredToken) != 15 {
-			fmt.Println("A application token must have a length of 15 characters")
-			hr()
-			continue
-		}
 		_, err := utils.SpinLoader("Validating", func(success chan interface{}, failure chan error) {
 			params := message.NewCreateMessageParams()
 			params.Body = &models.MessageExternal{

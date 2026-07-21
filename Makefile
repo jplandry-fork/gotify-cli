@@ -18,11 +18,7 @@ LD_FLAGS ?= $(if $(VERSION),-X main.Version=${VERSION}) \
 	-X main.BuildDate=$(shell date "+%F-%T") \
 	-X main.Commit=${COMMIT}
 
-ifdef GOTOOLCHAIN
-	GO_VERSION=$(GOTOOLCHAIN)
-else
-	GO_VERSION=$(shell go mod edit -json | jq -r .Toolchain | sed -e 's/go//')
-endif
+GO_VERSION=$(shell go mod edit -json | jq -r .Toolchain | sed -e 's/go//')
 
 build-docker-multiarch:
 	docker buildx build \
